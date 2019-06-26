@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AppMobileStore</string>
+    <string name="title_activity_register_map">Map</string>
+    <string-array name="tipo">
+        <item>comprador</item>
+        <item>vendedor</item>
+    </string-array>
+
+</resources>
