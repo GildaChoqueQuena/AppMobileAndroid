@@ -63,10 +63,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if (response.getString("message") != null){
                         Toast.makeText(LoginActivity.this, "Acceso Correcto", Toast.LENGTH_SHORT).show();
                         Data.TOKEN = response.getString("token");
-                        if (response.getString("tipo") == "comprador"){
+                        Data.ID_USER = response.getString("idUser");
+
+                        if (response.getString("tipo").equals("comprador")){
+                            Toast.makeText(LoginActivity.this, response.getString("tipo") + 1 , Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, BuyerHomeActivity.class);
                             startActivity(intent);
                         }else {
+                            Toast.makeText(LoginActivity.this, response.getString("tipo") + 2 , Toast.LENGTH_SHORT).show();
+
                             Intent intent = new Intent(LoginActivity.this, SellerHomeActivity.class);
                             startActivity(intent);
                         }
