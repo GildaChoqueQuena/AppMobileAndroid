@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".TiendaActivity"></activity>
+        <activity android:name=".TiendaActivity" />
         <activity android:name=".CitasActivity" />
         <activity android:name=".ComprasActivity" />
         <activity
@@ -55,6 +55,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
