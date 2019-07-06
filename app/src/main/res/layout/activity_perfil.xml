@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ultimo"
     tools:context=".PerfilActivity">
 
     <TextView
@@ -36,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avatarImage" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,7 +45,6 @@
         android:layout_marginTop="34dp"
         android:layout_marginEnd="73dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:text="PERFIL DE USUARIO"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,14 +66,14 @@
 
     <ImageView
         android:id="@+id/avatarImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="251dp"
+        android:layout_height="202dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText2"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        app:srcCompat="@drawable/usuarios" />
 
     <Button
         android:id="@+id/btnGuardar"
