@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ultimo"
     tools:context=".PostProduct">
 
     <TextView
@@ -36,8 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Descripcion"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/precioEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -50,8 +51,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="13dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Stock"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -64,8 +65,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="14dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Precio"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/stockEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
