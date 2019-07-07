@@ -83,6 +83,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
             }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                try {
+                    Toast.makeText(LoginActivity.this, errorResponse.getString("error"), Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
         });
 
 

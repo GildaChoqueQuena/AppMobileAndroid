@@ -121,6 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="publicar"
+        android:background="@drawable/button_rounded_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,6 +132,7 @@
         android:layout_width="99dp"
         android:layout_height="45dp"
         android:text="camera"
+        android:background="@drawable/button_rounded_border"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.5"
@@ -146,6 +148,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnCamera"
         app:layout_constraintTop_toBottomOf="@+id/categoriaSpinner"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        app:srcCompat="@drawable/big_camera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

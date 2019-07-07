@@ -104,6 +104,7 @@ public class PerfilActivity extends AppCompatActivity {
                 try {
                     if (response.getString("message") != null){
                         Toast.makeText(PerfilActivity.this,response.getString("message"),Toast.LENGTH_LONG ).show();
+                        PerfilActivity.this.finish();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

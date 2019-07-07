@@ -124,10 +124,11 @@ public class PostProduct extends AppCompatActivity implements View.OnClickListen
         params.put("stock", stockEdit.getText());
         params.put("estado", estado);
         params.put("categoria", categoria);
+        params.put("vendedor",Data.ID_USER);
 
 
 
-        client.post(Data.HOST_PRODUCT,params,new JsonHttpResponseHandler(){
+        client.post(Data.URL_PRODUCT,params,new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject resp) {
                 try {
