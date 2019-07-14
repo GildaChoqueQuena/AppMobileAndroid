@@ -34,5 +34,6 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="error_login">El sistema no pudo conectarse a google services intente mas tarde</string>
 
 </resources>
