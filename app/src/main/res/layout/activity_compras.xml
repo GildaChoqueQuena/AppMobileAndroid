@@ -7,28 +7,39 @@
     android:background="@drawable/ultimo"
     tools:context=".ComprasActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCompras"
+        android:layout_width="0dp"
+        android:layout_height="565dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="169dp"
-        android:layout_height="38dp"
+        android:id="@+id/textView3"
+        android:layout_width="206dp"
+        android:layout_height="45dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Mis Compras"
+        android:text="MIS COMPRAS"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textColorHighlight="#2196F3"
+        android:textColorHint="#00BCD4"
+        android:textColorLink="#03A9F4"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:layout_width="395dp"
-        android:layout_height="669dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 </androidx.constraintlayout.widget.ConstraintLayout>
