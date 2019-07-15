@@ -103,7 +103,6 @@ public class TiendaActivity extends AppCompatActivity {
 
 
     private void loadData() {
-        Toast.makeText(this, listData.toString(), Toast.LENGTH_LONG).show();
         ProductAdapter adapter = new ProductAdapter(this, listData);
         recyclerProduct.setAdapter(adapter);
 
