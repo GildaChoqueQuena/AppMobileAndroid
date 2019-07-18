@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/ultimo"
+android:orientation="vertical"
+android:textAlignment="center"
+tools:context=".EditProductActivity">
+
+<TextView
+    android:id="@+id/textView11"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:text="Detalles del producto"
+    android:textAlignment="center"
+    android:textSize="24sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<ImageView
+    android:id="@+id/imageFoto"
+    android:layout_width="80dp"
+    android:layout_height="71dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="24dp"
+    android:layout_marginEnd="8dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.498"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView11"
+    app:srcCompat="@drawable/common_google_signin_btn_icon_disabled" />
+
+    <EditText
+        android:id="@+id/editStock"
+        android:layout_width="134dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/editDesc" />
+
+    <EditText
+        android:id="@+id/editDesc"
+        android:layout_width="134dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageFoto" />
+
+    <EditText
+        android:id="@+id/editPrecio"
+        android:layout_width="134dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/editStock" />
+
+<TextView
+    android:id="@+id/textView12"
+    android:layout_width="122dp"
+    android:layout_height="34dp"
+    android:layout_marginStart="28dp"
+    android:layout_marginTop="40dp"
+    android:text="PRECIO"
+    android:textAlignment="center"
+    android:textSize="18sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+<TextView
+    android:id="@+id/textView13"
+    android:layout_width="122dp"
+    android:layout_height="34dp"
+    android:layout_marginStart="28dp"
+    android:layout_marginTop="24dp"
+    android:text="STOCK"
+    android:textAlignment="center"
+    android:textSize="18sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+<TextView
+    android:id="@+id/textView14"
+    android:layout_width="122dp"
+    android:layout_height="34dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="28dp"
+    android:layout_marginEnd="8dp"
+    android:text="DESCRIPCION"
+    android:textAlignment="center"
+    android:textSize="18sp"
+    app:layout_constraintEnd_toStartOf="@+id/editDesc"
+    app:layout_constraintHorizontal_bias="0.202"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/imageFoto" />
+
+<Button
+    android:id="@+id/btnActualizar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="60dp"
+    android:layout_marginTop="104dp"
+    android:background="@drawable/button_rounded"
+    android:text="ACTUALIZAR"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+<Button
+    android:id="@+id/btnEliminar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="96dp"
+    android:layout_marginEnd="8dp"
+    android:background="@drawable/button_rounded"
+    android:text="ELIMINAR"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.647"
+    app:layout_constraintStart_toEndOf="@+id/btnActualizar"
+    app:layout_constraintTop_toBottomOf="@+id/editPrecio" />
+</androidx.constraintlayout.widget.ConstraintLayout>

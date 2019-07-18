@@ -11,12 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.appmobilestore.Items.ItemProduct;
 import com.example.appmobilestore.Utilities.Data;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -46,9 +44,9 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
     private void loadComponents() {
         //producto
         textCategoria = findViewById(R.id.textCategoria);
-        textStock = findViewById(R.id.textStock);
+        textStock = findViewById(R.id.editStock);
         textDescripcion = findViewById(R.id.textDescripcion);
-        textPrecio = findViewById(R.id.textPrecio);
+        textPrecio = findViewById(R.id.editPrecio);
         imageFoto = findViewById(R.id.imageFoto);
         //vendedor
         textNombreV = findViewById(R.id.textNombreV);

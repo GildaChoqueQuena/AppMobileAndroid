@@ -13,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.appmobilestore.EditProductActivity;
 import com.example.appmobilestore.Items.ItemProduct;
 import com.example.appmobilestore.ProductDetailsActivity;
 import com.example.appmobilestore.R;
@@ -45,9 +46,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ProductDetailsActivity.class);
-                intent.putExtra("id",listData.get(position).getId());
-                context.startActivity(intent);
+
+                if (Data.TYPE_USER.equals("vendedor")){
+                    Intent intent = new Intent(context, EditProductActivity.class);
+                    intent.putExtra("id",listData.get(position).getId());
+                    context.startActivity(intent);
+                }else{
+                    Intent intent = new Intent(context, ProductDetailsActivity.class);
+                    intent.putExtra("id",listData.get(position).getId());
+                    context.startActivity(intent);
+                }
+
             }
         });
     }
@@ -67,8 +76,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             super(itemView);
             imageFoto = itemView.findViewById(R.id.imageFoto);
             textDescripcion = itemView.findViewById(R.id.textDescripcion);
-            textStock = itemView.findViewById(R.id.textStock);
-            textPrecio = itemView.findViewById(R.id.textPrecio);
+            textStock = itemView.findViewById(R.id.editStock);
+            textPrecio = itemView.findViewById(R.id.editPrecio);
             parentLayout = itemView.findViewById(R.id.parentLayout);
         }
 

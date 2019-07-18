@@ -1,6 +1,7 @@
 package com.example.appmobilestore;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,15 +22,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
 public class TiendaActivity extends AppCompatActivity {
     RecyclerView recyclerProduct;
     Spinner spinnerCategoria;
-    ArrayList<ItemProduct> listData;
+    ArrayList<ItemProduct> listData,listSearchedData;
     String categoria;
+    androidx.appcompat.widget.SearchView buscador;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +38,15 @@ public class TiendaActivity extends AppCompatActivity {
 
         loadComponents();
         getData();
+
+
     }
 
 
 
     private void loadComponents() {
         listData = new ArrayList<>();
+        listSearchedData = new ArrayList<>();
 
         spinnerCategoria = findViewById( R.id.spinnerCategoria);
         spinnerCategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -56,11 +60,67 @@ public class TiendaActivity extends AppCompatActivity {
 
             }
         });
+        buscador = findViewById( R.id.buscador);
+
+        buscador.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                buscar(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (newText.equals("")){
+                    loadData(false);
+                }
+                return false;
+            }
+        });
 
         recyclerProduct = findViewById(R.id.recyclerProducts);
 
         recyclerProduct.setLayoutManager(
                 new LinearLayoutManager(TiendaActivity.this,RecyclerView.VERTICAL,false));
+
+    }
+
+    private void buscar(String query) {
+        listSearchedData.clear();
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(Data.URL_PRODUCT + "?descripcion="+query,new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    JSONArray array = response.getJSONArray("data");
+                    for (int i = 0; i < array.length(); i++){
+                        JSONObject obj = array.getJSONObject(i);
+                        ItemProduct item = new ItemProduct();
+                        item.setDescripcion(obj.getString("descripcion"));
+                        item.setId(obj.getString("_id"));
+
+                        item.setStock(obj.getInt("stock"));
+                        item.setPrecio(obj.getDouble("precio"));
+                        item.setFoto(obj.getString("foto"));
+                        listSearchedData.add(item);
+                    }
+
+                    loadData(true);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                try {
+                    Toast.makeText(TiendaActivity.this, errorResponse.getString("error"), Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    Toast.makeText(TiendaActivity.this, "Exception on Failure method", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+        });
 
     }
 
@@ -83,7 +143,7 @@ public class TiendaActivity extends AppCompatActivity {
                         listData.add(item);
                     }
 
-                    loadData();
+                    loadData(false);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -102,9 +162,15 @@ public class TiendaActivity extends AppCompatActivity {
     }
 
 
-    private void loadData() {
-        ProductAdapter adapter = new ProductAdapter(this, listData);
-        recyclerProduct.setAdapter(adapter);
+    private void loadData(boolean b) {
+        if (b){
+            ProductAdapter adapter = new ProductAdapter(this, listSearchedData);
+            recyclerProduct.setAdapter(adapter);
+        }else  {
+            ProductAdapter adapter = new ProductAdapter(this, listData);
+            recyclerProduct.setAdapter(adapter);
+        }
+
 
     }
 }

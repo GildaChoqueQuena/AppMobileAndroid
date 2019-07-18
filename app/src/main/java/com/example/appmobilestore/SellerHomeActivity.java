@@ -13,7 +13,8 @@ import android.widget.Button;
 import com.example.appmobilestore.Utilities.Data;
 
 public class SellerHomeActivity extends AppCompatActivity implements View.OnClickListener{
-    Button btnPublicar, btnPerfil;
+    Button btnPublicar, btnPerfil,btnCitas,btnProductos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +29,14 @@ public class SellerHomeActivity extends AppCompatActivity implements View.OnClic
     private void loadComponents() {
         btnPublicar = findViewById(R.id.btnPublicar);
         btnPerfil = findViewById(R.id.btnPerfil);
+        btnCitas = findViewById(R.id.btnCitas);
+        btnProductos = findViewById(R.id.btnProductos);
         //los otros botones
 
         btnPublicar.setOnClickListener(this);
         btnPerfil.setOnClickListener(this);
+        btnCitas.setOnClickListener(this);
+        btnProductos.setOnClickListener(this);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -72,6 +77,9 @@ public class SellerHomeActivity extends AppCompatActivity implements View.OnClic
         switch (v.getId()){
             case R.id.btnPublicar: intent = new Intent(this,PostProduct.class);break;
             case R.id.btnPerfil: intent = new Intent(this, PerfilActivity.class);break ;
+            case R.id.btnProductos: intent = new Intent(this, MyProductsActivity.class);break ;
+            case R.id.btnCitas: intent = new Intent(this, CitasActivity.class);break ;
+
             default: intent = new Intent(this,SellerHomeActivity.class);break;
 
         }

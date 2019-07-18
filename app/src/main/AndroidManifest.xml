@@ -21,7 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".LoginGoogle"></activity>
+        <activity android:name=".EditProductActivity"></activity>
+        <activity android:name=".MyProductsActivity" />
+        <activity android:name=".LoginGoogle" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".CreateMeetingActivity" />
         <activity android:name=".ChatActivity" />

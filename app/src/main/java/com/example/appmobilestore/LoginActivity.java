@@ -94,6 +94,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Toast.makeText(LoginActivity.this, "Acceso Correcto", Toast.LENGTH_SHORT).show();
                         Data.TOKEN = response.getString("token");
                         Data.ID_USER = response.getString("idUser");
+                        Data.TYPE_USER = response.getString("tipo");
 
                         if (response.getString("tipo").equals("comprador")){
                             Toast.makeText(LoginActivity.this, response.getString("tipo") + 1 , Toast.LENGTH_SHORT).show();
