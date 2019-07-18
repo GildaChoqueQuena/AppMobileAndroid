@@ -114,6 +114,36 @@ public class EditProductActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void deleteData() {
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        client.delete(Data.URL_PRODUCT+id,params,new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+
+                    if (response.getString("message") != null){
+
+                        Toast.makeText(EditProductActivity.this, response.getString("message"), Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(EditProductActivity.this,SellerHomeActivity.class);
+
+                        startActivity(intent);
+                    }
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                try {
+                    Toast.makeText(EditProductActivity.this, errorResponse.getString("error"), Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    Toast.makeText(EditProductActivity.this, "Exception on Failure method", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+        });
 
     }
 

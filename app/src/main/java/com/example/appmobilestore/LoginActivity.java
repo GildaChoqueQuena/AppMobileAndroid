@@ -32,23 +32,35 @@ import cz.msebera.android.httpclient.Header;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
     EditText emailEdit, passwordEdit;
     Button loginButton, registerButton;
-
-    private GoogleApiClient client;
-    private int GOOGLE_CODE = 11235;
+    private SignInButton signInButton;
+    private GoogleApiClient googleApiClient;
+    public static final int SING_IN_CODE = 777;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
 
-        client = new GoogleApiClient.Builder(this)
+        googleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this,this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, options)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
+
+        signInButton = (SignInButton)findViewById(R.id.signInButton);
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+                startActivityForResult(intent, SING_IN_CODE);
+            }
+        });
+
+
         loadComponents();
+
 
     }
 
@@ -62,16 +74,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         loginButton.setOnClickListener(this);
         registerButton.setOnClickListener(this);
-        SignInButton googlebtn = (SignInButton)this.findViewById(R.id.googlebutton);
-        googlebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = Auth.GoogleSignInApi.getSignInIntent(client);
-                startActivityForResult(intent, GOOGLE_CODE);
-            }
-        });
-
-
     }
 
     private void login() {
@@ -145,14 +147,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == GOOGLE_CODE){
+        if(requestCode == SING_IN_CODE){
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            if (result.isSuccess()){
-                Toast.makeText(this, "Ok", Toast.LENGTH_LONG).show();
-            }else{
-                Toast.makeText(this, R.string.error_login, Toast.LENGTH_LONG).show();
-            }
+            handleSignInResult(result);
         }
+    }
+
+    private void handleSignInResult(GoogleSignInResult result) {
+        if (result.isSuccess()){
+            goMainScreen();
+        }else{
+            Toast.makeText(this,"No se pudo Iniciar Sesion",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void goMainScreen() {
+        Intent intent = new Intent(this,LoginGoogle.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     @Override
